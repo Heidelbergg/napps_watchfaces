@@ -37,16 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ElevatedButton(
             onPressed: () async {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Check the screen of your watch in order to install the watch face")));
-              final url = 'https://play.google.com/store/apps/details?id=com.NappS.NeonWatch';
-              /*final androidIntent = AndroidIntent(
-                action: 'android.intent.action.VIEW',
-                data: url,
-                package: 'com.google.android.wearable.app',
-                category: 'android.intent.category.DEFAULT',
-                flags: [AndroidIntent().flags![Flag.FLAG_ACTIVITY_NEW_TASK]],
-              );
-              await androidIntent.launch();*/
+              const url = 'https://play.google.com/store/apps/details?id=com.NappS.NeonWatch';
               WearBridge.openUrl(url);
+              WearBridge.isWatch().then((value) {
+                print(value);
+              });
             },
             style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(const Size(150, 50)),
