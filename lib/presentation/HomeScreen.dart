@@ -1,6 +1,8 @@
 import 'package:android_intent_plus/android_intent.dart';
 import 'package:android_intent_plus/flag.dart';
 import "package:flutter/material.dart";
+import 'package:wear_bridge/wear_bridge.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -36,14 +38,15 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () async {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Check the screen of your watch in order to install the watch face")));
               final url = 'https://play.google.com/store/apps/details?id=com.NappS.NeonWatch';
-              final androidIntent = AndroidIntent(
+              /*final androidIntent = AndroidIntent(
                 action: 'android.intent.action.VIEW',
                 data: url,
-                package: 'com.NappS.NeonWatch',
+                package: 'com.google.android.wearable.app',
                 category: 'android.intent.category.DEFAULT',
                 flags: [AndroidIntent().flags![Flag.FLAG_ACTIVITY_NEW_TASK]],
               );
-              await androidIntent.launch();
+              await androidIntent.launch();*/
+              WearBridge.openUrl(url);
             },
             style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(const Size(150, 50)),
