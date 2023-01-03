@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Text("Neon Watch Face", style: TextStyle(fontSize: 24, color: Colors.grey.withOpacity(0.85), fontWeight: FontWeight.w700),),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Text("This is a companion app only. Press the button below and see the watch face on your watch.", style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.85), fontWeight: FontWeight.w400),),
+            child: Text("This is a companion app only. Press the button below to see the Watch Face.", style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.85), fontWeight: FontWeight.w400),),
           ),
           const SizedBox(
             height: 50,
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     content: SingleChildScrollView(
                       child: ListBody(
                         children: const <Widget>[
-                          Text('Make sure that your Watch is connected to your phone before proceeding. Press next after you have connected your watch to your phone.'),
+                          Text('Make sure that your Watch is connected to your phone before proceeding.'),
                         ],
                       ),
                     ),
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       TextButton(
                         child: const Text('Next'),
                         onPressed: () {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Check the screen of your watch in order to install the watch face")));
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Check the screen of your watch in order to install the watch face.")));
                           const url = 'https://play.google.com/store/apps/details?id=com.NappS.NeonWatch';
                           WearBridge.openUrl(url);
                           Navigator.of(context).pop();
