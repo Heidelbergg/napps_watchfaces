@@ -37,11 +37,36 @@ class _HomeScreenState extends State<HomeScreen> {
           ElevatedButton(
             onPressed: () async {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Check the screen of your watch in order to install the watch face")));
-              const url = 'https://play.google.com/store/apps/details?id=com.NappS.NeonWatch';
-              WearBridge.openUrl(url);
-              WearBridge.isWatch().then((value) {
-                print(value);
-              });
+              showDialog<void>(
+                context: context,
+                barrierDismissible: false, // user must tap button!
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('AlertDialog Title'),
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: const <Widget>[
+                          Text('Connect your Watch to your phone'),
+                          Text('Make sure that your Watch is connected to your phone before proceeding. Press next after you have connected your watch to your phone.'),
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('Next'),
+                        onPressed: () {
+                          const url = 'https://play.google.com/store/apps/details?id=com.NappS.NeonWatch';
+                          WearBridge.openUrl(url);
+                          WearBridge.isWatch().then((value) {
+                            print(value);
+                          });
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
             },
             style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(const Size(150, 50)),
