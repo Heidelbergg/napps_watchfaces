@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.NappS.NeonWatch.napps_watchfaces">
+    package="com.NappS.NeonWatch">
    <application
-        android:label="napps_watchfaces"
+        android:label="Neon Watch Face"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
