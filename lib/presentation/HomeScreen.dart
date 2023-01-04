@@ -3,7 +3,6 @@ import 'package:android_intent_plus/flag.dart';
 import "package:flutter/material.dart";
 import 'package:wear_bridge/wear_bridge.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -23,12 +22,27 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(50.0),
-            child: Image.asset("assets/watch.png", fit: BoxFit.contain,),
+            child: Image.asset(
+              "assets/watch.png",
+              fit: BoxFit.contain,
+            ),
           ),
-          Text("Neon Watch Face", style: TextStyle(fontSize: 24, color: Colors.grey.withOpacity(0.85), fontWeight: FontWeight.w700),),
+          Text(
+            "Neon Watch Face",
+            style: TextStyle(
+                fontSize: 24,
+                color: Color.fromARGB(255, 230, 230, 230).withOpacity(0.85),
+                fontWeight: FontWeight.w700),
+          ),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Text("This is a companion app only. Press the button below to see the Watch Face.", style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.85), fontWeight: FontWeight.w400),),
+            child: Text(
+              "This is a companion app only. Press the button below to see the Watch Face.",
+              style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey.withOpacity(0.85),
+                  fontWeight: FontWeight.w400),
+            ),
           ),
           const SizedBox(
             height: 50,
@@ -45,7 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     content: SingleChildScrollView(
                       child: ListBody(
                         children: const <Widget>[
-                          Text('Make sure that your Watch is connected to your phone before proceeding.'),
+                          Text(
+                              'Make sure that your Watch is connected to your phone before proceeding.'),
                         ],
                       ),
                     ),
@@ -53,8 +68,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       TextButton(
                         child: const Text('Next'),
                         onPressed: () {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Check the screen of your watch in order to install the watch face.")));
-                          const url = 'https://play.google.com/store/apps/details?id=com.NappS.NeonWatch';
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text(
+                                  "Check the screen of your watch in order to install the watch face.")));
+                          const url =
+                              'https://play.google.com/store/apps/details?id=com.NappS.NeonWatch';
                           WearBridge.openUrl(url);
                           Navigator.of(context).pop();
                         },
@@ -70,7 +88,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 elevation: MaterialStateProperty.all(3),
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)))),
-            child: const Text("Open on Watch", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),),
+            child: const Text(
+              "Open on Watch",
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  color: Colors.black),
+            ),
           ),
           const SizedBox(
             height: 30,
